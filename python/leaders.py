@@ -52,10 +52,11 @@ def importer_donnees(fichier):
             line = line.strip()
             if len(line) > 0:
                 l = line.split(";")
-                if l[7:] == "" :
-                    l = netoyer_donnees(l)
-                leaders.append(l)
-            
+                leader = netoyer_donnees(l)
+                # requete geocode
+                # mettre resultat dans le dico
+                leaders.append(leader)
+    print(leaders)
     return leaders
 
 
