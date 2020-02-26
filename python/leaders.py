@@ -18,9 +18,10 @@ mario-alexis-tarache;Mario Alexis Tarache Perez;M;2016-01-14;San Luis de Palenqu
 
 """
 import pandas as pd
-import geopy
+from geopy.geocoders import Nominatim
 import geopandas as gpd
 import matplotlib.pyplot as plt
+geolocator = Nominatim(user_agent="colombian_leaders_murders")
 
 
 def netoyer_donnees(l):
@@ -36,6 +37,11 @@ def netoyer_donnees(l):
     d["Municipio"] = (l[4])
     d["Departamento"] = (l[5])
     d["Tipo de líder"] = (l[6])
+    
+    #location = geolocator.geocode(d["Municipio"]+ " " + d["Departamento"]+" Colombia")
+    
+    #d["lat"] = location.latitude
+    #d["lng"] = location.longitude
     return d
 
 def importer_donnees(fichier):
@@ -47,14 +53,12 @@ def importer_donnees(fichier):
     with open(fichier, "r") as file:
         leaders = []
         line = file.readline() # Lit la ligne d'entete
-        
         for line in file:
             line = line.strip()
             if len(line) > 0:
                 l = line.split(";")
                 leader = netoyer_donnees(l)
-                # requete geocode
-                # mettre resultat dans le dico
+                # tri departements²
                 leaders.append(leader)
     print(leaders)
     return leaders
@@ -66,7 +70,7 @@ def main():
     print("********************************")
     print("\n")
     
-    fichier = "Lideres_asesinados.csv"
+    fichier = "Lideres_asesinados_short.csv"
     print(" - import des données...")
     leaders = importer_donnees(fichier)
     print("   ... {} données importés".format(len(leaders)))
