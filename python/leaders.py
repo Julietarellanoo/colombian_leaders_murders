@@ -51,17 +51,23 @@ def importer_donnees(fichier):
     """
        
     with open(fichier, "r") as file:
-        leaders = []
-        line = file.readline() # Lit la ligne d'entete
-        for line in file:
-            line = line.strip()
-            if len(line) > 0:
-                l = line.split(";")
-                leader = netoyer_donnees(l)
-                # tri departements²
-                leaders.append(leader)
-    print(leaders)
-    return leaders
+     nbmpd= {}
+     line = file.readline() # Lit la ligne d'entete
+     for line in file:
+      line = line.strip()
+      if len(line) > 0:
+        l = line.split(";")
+        leader = netoyer_donnees(l)
+
+        # tri departements
+        if leader["Departamento"]  in nbmpd:
+            nbmpd[leader["Departamento"]] = nbmpd[leader["Departamento"]]+1
+        else:
+            nbmpd[leader["Departamento"]] = 1
+
+    print(nbmpd)
+
+    return nbmpd
 
 
 def main():
