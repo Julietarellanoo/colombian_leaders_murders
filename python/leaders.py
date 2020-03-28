@@ -21,7 +21,8 @@ import pandas as pd
 from geopy.geocoders import Nominatim
 import geopandas as gpd
 import matplotlib.pyplot as plt
-geolocator = Nominatim(user_agent="colombian_leaders_murders")
+import json
+#geolocator = Nominatim(user_agent="colombian_leaders_murders")
 
 
 def netoyer_donnees(l):
@@ -44,9 +45,9 @@ def netoyer_donnees(l):
     #d["lng"] = location.longitude
     return d
 
-def importer_donnees(fichier):
+def leadersmorts_dpt(fichier):
     """
-    Importe un fichier csv et renvoie
+    Compte le nombre de homicides par departement et renvoie
     une liste de dictionnaires.
     """
        
@@ -65,11 +66,26 @@ def importer_donnees(fichier):
         else:
             nbmpd[leader["Departamento"]] = 1
 
-    print(nbmpd)
-
     return nbmpd
 
+def addproperties_json():
+    """
+    Adition de nombre de leaders morts par departement au geojson
+    """
 
+    boundaries = {}
+    fichier = "Lideres_asesinados_short.csv"
+    with open('boundaries_colombia.geojson', encoding="utf-8") as f:
+     d = json.load(f)
+    for item in d['features'][0]['properties']['admin1Name']:
+        mortspd = leadersmorts_dpt(fichier)
+        if mortspd["Departamento"] in boundaries:
+            if boundaries[mortspd["Departamento"]] == d['features'][0]['properties']['admin1Name']:
+                d['count'] = d['features'][0]['properties']['admin1Name'] + 1
+            else:
+                d['count'] = d['features'][0]['properties']['admin1Name'] + 1
+    return  json          
+       
 def main():
     print("********************************")
     print("* Geocoding *")
@@ -78,7 +94,8 @@ def main():
     
     fichier = "Lideres_asesinados_short.csv"
     print(" - import des données...")
-    leaders = importer_donnees(fichier)
+    leaders = leadersmorts_dpt(fichier)
     print("   ... {} données importés".format(len(leaders)))
-    
+    json = addproperties_json()
+    print("   ... {} données importés".format(len(json)))
 main()
