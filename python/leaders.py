@@ -17,11 +17,8 @@ willinton-andres-banol;Willinton Andres Bañol;M;2016-01-10;Pereira;Risaralda;L�
 mario-alexis-tarache;Mario Alexis Tarache Perez;M;2016-01-14;San Luis de Palenque;Casanare;Líder comunal;;;;;;;;;;;;;;;;;;
 
 """
-import pandas as pd
-from geopy.geocoders import Nominatim
-import geopandas as gpd
-import matplotlib.pyplot as plt
 import json
+import os
 #geolocator = Nominatim(user_agent="colombian_leaders_murders")
 
 
@@ -31,27 +28,27 @@ def netoyer_donnees(l):
     en un dictionnaires.
     """
     d = {}
-    d["id"] = l[0]    
+    d["id"] = l[0]
     d["Nombre"] = l[1]
     d["Género"] = (l[2])
     d["Fecha"] = (l[3])
     d["Municipio"] = (l[4])
     d["Departamento"] = (l[5])
     d["Tipo de líder"] = (l[6])
-    
+
     #location = geolocator.geocode(d["Municipio"]+ " " + d["Departamento"]+" Colombia")
-    
+
     #d["lat"] = location.latitude
     #d["lng"] = location.longitude
     return d
 
-def leadersmorts_dpt(fichier):
+def leadersmorts_dpt(source):
     """
     Compte le nombre de homicides par departement et renvoie
     une liste de dictionnaires.
     """
-       
-    with open(fichier, "r") as file:
+
+    with open(source, "r") as file:
      nbmpd= {}
      line = file.readline() # Lit la ligne d'entete
      for line in file:
@@ -68,34 +65,36 @@ def leadersmorts_dpt(fichier):
 
     return nbmpd
 
-def addproperties_json():
+def addproperties_json(mortspd):
     """
     Adition de nombre de leaders morts par departement au geojson
     """
+    with open('./data/boundaries_colombia.geojson', encoding="utf-8") as f: # load boundaries
+     boundaries = json.load(f)
 
-    boundaries = {}
-    fichier = "Lideres_asesinados_short.csv"
-    with open('boundaries_colombia.geojson', encoding="utf-8") as f:
-     d = json.load(f)
-    for item in d['features'][0]['properties']['admin1Name']:
-        mortspd = leadersmorts_dpt(fichier)
-        if mortspd["Departamento"] in boundaries:
-            if boundaries[mortspd["Departamento"]] == d['features'][0]['properties']['admin1Name']:
-                d['count'] = d['features'][0]['properties']['admin1Name'] + 1
-            else:
-                d['count'] = d['features'][0]['properties']['admin1Name'] + 1
-    return  json          
-       
+
+    for regionBoundary in boundaries['features']: # get nb murdered by region
+        currentRegion = regionBoundary['properties']['admin1Name']
+        if currentRegion in mortspd:
+            regionBoundary['properties']['count'] = mortspd[currentRegion]
+            continue
+    return  boundaries
+
 def main():
     print("********************************")
     print("* Geocoding *")
     print("********************************")
     print("\n")
-    
-    fichier = "Lideres_asesinados_short.csv"
+
+    source = "./data/Lideres_asesinados.csv"
     print(" - import des données...")
-    leaders = leadersmorts_dpt(fichier)
-    print("   ... {} données importés".format(len(leaders)))
-    json = addproperties_json()
-    print("   ... {} données importés".format(len(json)))
+    leaders = leadersmorts_dpt(source)
+    print("   ... {} départements recensés avec 1 ou plus meurtres".format(len(leaders)))
+    boundariesWithCount = addproperties_json(leaders)
+
+    if not os.path.exists("./output/"):
+        os.makedirs("./output/")
+    boundariesWithCountFile = open("./output/boundariesWithCount.json", "w")
+    boundariesWithCountFile.write(json.dumps(boundariesWithCount))
+    boundariesWithCountFile.close()
 main()
