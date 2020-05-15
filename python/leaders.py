@@ -92,8 +92,8 @@ def main():
     print("   ... {} départements recensés avec 1 ou plus meurtres".format(len(leaders)))
     boundariesWithCount = addproperties_json(leaders)
 
-    if not os.path.exists("./output/"):
-        os.makedirs("./output/")
+    if not os.path.exists("output"):
+        os.makedirs("output")
     boundariesWithCountFile = open("./output/boundariesWithCount.json", "w")
     boundariesWithCountFile.write(json.dumps(boundariesWithCount))
     boundariesWithCountFile.close()
