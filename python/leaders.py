@@ -48,7 +48,7 @@ def leadersmorts_dpt(source):
     une liste de dictionnaires.
     """
 
-    with open(source, "r") as file:
+    with open(source,encoding="utf-8",mode="r") as file:
      nbmpd= {}
      line = file.readline() # Lit la ligne d'entete
      for line in file:
