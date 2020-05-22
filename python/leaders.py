@@ -86,7 +86,7 @@ def main():
     print("********************************")
     print("\n")
 
-    source = "./data/Lideres_asesinados.csv"
+    source = "./data/lideres_asesinados.csv"
     print(" - import des données...")
     leaders = leadersmorts_dpt(source)
     print("   ... {} départements recensés avec 1 ou plus meurtres".format(len(leaders)))
@@ -94,7 +94,10 @@ def main():
 
     if not os.path.exists("output"):
         os.makedirs("output")
-    boundariesWithCountFile = open("./output/boundariesWithCount.json", "w")
+    boundariesWithCountFile = open("./output/result.geojson", "w")
     boundariesWithCountFile.write(json.dumps(boundariesWithCount))
     boundariesWithCountFile.close()
-main()
+
+
+if __name__ == "__main__":
+    main()
