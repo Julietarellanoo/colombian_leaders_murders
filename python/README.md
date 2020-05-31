@@ -1,5 +1,13 @@
 # Python Script
 
+## Use with Python
+
+Run:
+```
+python leaders.py 
+```
+Result will be stored in `output` folder
+
 ## Use with Docker
 [Doc](https://runnable.com/docker/python/dockerize-your-python-application)
 
