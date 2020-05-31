@@ -4,7 +4,7 @@
 
 Run:
 ```
-python leaders.py 
+python3 leaders.py 
 ```
 Result will be stored in `output` folder
 
