@@ -18,7 +18,7 @@ The objective is to compile open source geographic data in order to highlight th
 * Python - Programming language
 
 ## What's Kepler?
-[Kepler.gl](https://kepler.gl/#/) is a Uber’s Open Source Geospatial Toolbox for large-scale data sets. Built on top of the * [deck](https://deck.gl/#/) WebGL data visualization framework, kepler.gl scales the map creation process by quickly gaining insights and validating visualization ideas from geospatial data.
+[Kepler.gl](https://kepler.gl/#/) is a Uber’s Open Source Geospatial Toolbox for large-scale data sets. Built on top of the [deck](https://deck.gl/#/) WebGL data visualization framework, kepler.gl scales the map creation process by quickly gaining insights and validating visualization ideas from geospatial data.
 
 
 ## Authors
