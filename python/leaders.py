@@ -65,11 +65,11 @@ def leadersmorts_dpt(source):
 
     return nbmpd
 
-def addproperties_json(mortspd):
+def addproperties_json(source, mortspd):
     """
     Adition de nombre de leaders morts par departement au geojson
     """
-    with open('./data/boundaries_colombia.geojson', encoding="utf-8") as f: # load boundaries
+    with open(source, encoding="utf-8") as f: # load boundaries
      boundaries = json.load(f)
 
 
@@ -86,11 +86,13 @@ def main():
     print("********************************")
     print("\n")
 
-    source = "./data/lideres_asesinados.csv"
     print(" - import des données...")
+    source = "./data/lideres_asesinados.csv"    
     leaders = leadersmorts_dpt(source)
     print("   ... {} départements recensés avec 1 ou plus meurtres".format(len(leaders)))
-    boundariesWithCount = addproperties_json(leaders)
+    
+    boundariesFilePath = "./data/boundaries_colombia.geojson" 
+    boundariesWithCount = addproperties_json(boundariesFilePath, leaders)
 
     if not os.path.exists("output"):
         os.makedirs("output")
