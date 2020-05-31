@@ -19,7 +19,7 @@ mario-alexis-tarache;Mario Alexis Tarache Perez;M;2016-01-14;San Luis de Palenqu
 """
 import json
 import os
-#geolocator = Nominatim(user_agent="colombian_leaders_murders")
+
 
 
 def netoyer_donnees(l):
@@ -36,10 +36,7 @@ def netoyer_donnees(l):
     d["Departamento"] = (l[5])
     d["Tipo de líder"] = (l[6])
 
-    #location = geolocator.geocode(d["Municipio"]+ " " + d["Departamento"]+" Colombia")
-
-    #d["lat"] = location.latitude
-    #d["lng"] = location.longitude
+    
     return d
 
 def leadersmorts_dpt(source):
@@ -71,12 +68,20 @@ def addproperties_json(source, mortspd):
     """
     with open(source, encoding="utf-8") as f: # load boundaries
      boundaries = json.load(f)
-
+     
 
     for regionBoundary in boundaries['features']: # get nb murdered by region
-        currentRegion = regionBoundary['properties']['admin1Name']
+        del regionBoundary['properties']['admin0Name']
+        del regionBoundary['properties']['admin1Pcod']
+        del regionBoundary['properties']['admin1RefN']
+        
+        regionBoundary['properties']['Departement'] = regionBoundary['properties']['admin1Name']
+        
+        currentRegion = regionBoundary['properties']['Departement']
         if currentRegion in mortspd:
             regionBoundary['properties']['count'] = mortspd[currentRegion]
+            regionBoundary['properties']['Morts'] = regionBoundary['properties']['count']
+                        
             continue
     return  boundaries
 
