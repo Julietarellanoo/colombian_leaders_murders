@@ -4,7 +4,7 @@ The objective is to compile open source geographic data in order to highlight th
 
 ## Methodological scheme
 
-![Sheme](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/meto.PNG)
+![Sheme](https://github.com/Julietarellanoo/colombian_leaders_murders/tree/master/images/meto_final.PNG)
 
 ## The Data and Sources d’acquisition
 
@@ -14,9 +14,12 @@ The objective is to compile open source geographic data in order to highlight th
 
 ## Built With
 
-* [Deck](https://deck.gl/#/) - The WebMap library used
+* [kepler](https://kepler.gl/#/) - The WebMap app
+## What's Kepler?
+Kepler.gl is a Uber’s Open Source Geospatial Toolbox for large-scale data sets. Built on top of the [deck](https://deck.gl/#/) WebGL data visualization framework, kepler.gl scales the map creation process by quickly gaining insights and validating visualization ideas from geospatial data.
+
 * Python - Programming language
-* Javascript - Web Programming language
+
 
 ## Authors
 
@@ -26,9 +29,10 @@ The objective is to compile open source geographic data in order to highlight th
 
 * **Pierre Bails** - *Professor* - [Baipi](https://github.com/baipi)
 
-## Exemple Results
+## Results
 
-Source: deck.gl
+Source: kepler.gl 
+link final work [3D Map homicides of social leaders in Colombia] (https://kepler.gl/demo/map?mapUrl=https://dl.dropboxusercontent.com/s/8y8p1z3r3hxftux/keplergl_rmfxir5.json)
 
-![deck.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/deck.png)
+![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/kepler.PNG)
 
