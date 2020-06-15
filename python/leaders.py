@@ -79,8 +79,8 @@ def addproperties_json(source, mortspd):
         
         currentRegion = regionBoundary['properties']['Departement']
         if currentRegion in mortspd:
-            regionBoundary['properties']['count'] = mortspd[currentRegion]
-            regionBoundary['properties']['Morts'] = regionBoundary['properties']['count']
+            regionBoundary['properties']['Morts'] = mortspd[currentRegion]
+            mortspd[currentRegion] = regionBoundary['properties']['Morts']
                         
             continue
     return  boundaries
