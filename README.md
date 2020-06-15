@@ -20,6 +20,21 @@ The objective is to compile open source geographic data in order to highlight th
 ## What's Kepler?
 [Kepler.gl](https://kepler.gl/#/) is a Uber’s Open Source Geospatial Toolbox for large-scale data sets. Built on top of the [deck](https://deck.gl/#/) WebGL data visualization framework, kepler.gl scales the map creation process by quickly gaining insights and validating visualization ideas from geospatial data.
 
+## Which selection parametres in Kepler?
+![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/parametres.png)
+
+The choice of the parameters was realized regarding :
+* The geoJSON properties (number of Morts) as a 3D volume inside the map allows a better visualization of the quantity of homicides in relation to a volume instead of to a number, this helps a lot in the hierarchisation of the phenomenon.
+* A thematic and sequential range of colors (reds and oranges) that helps to do a follow up of the evolution of the social problem, from the less affected regions to the most impacted departments.
+* Height for each polygone depending on the quantity of homicides in order to highlight the most affected departments. 
+* The choice of the Map template style in Mapbox was "light". The template offers a subtle light backdrop for data visualizations, creating an harmony with the quite dense color range of the 3D map. 
+
+## Why 3D web Map?
+
+The 3D web maps are tools for the visualization of three-dimensional data (3D) that allow the user to view the information from new perspectives. 3D maps allow the exploration of perspectives which possibly could not be visualizable on conventional bidimensional maps and charts (2D). The use of online cartographic tools allows the user to interact with the information and so to appropriate it more easily.   
+
+The challenges are, one one hand, to lighten the formats (geoJSON) using GIS tools and programmation languages like Python to reduce the waiting times of the user, and on the other hand, to turn the maps into an attractive and interactive communication tool 
+
 
 ## Authors
 
