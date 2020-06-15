@@ -34,7 +34,7 @@ The objective is to compile open source geographic data in order to highlight th
 Source: kepler.gl 
 * [link final work](https://kepler.gl/demo/map?mapUrl=https://dl.dropboxusercontent.com/s/8y8p1z3r3hxftux/keplergl_rmfxir5.json)
 
-![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/webcarte.PNG)
+![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/webcarte.png)
 
 
 ## Challenges
