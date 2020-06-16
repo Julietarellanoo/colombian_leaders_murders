@@ -66,12 +66,11 @@ def addproperties_json(source, mortspd):
     """
     Adition de nombre de leaders morts par departement au geojson
     """
-    with open(source, encoding="utf-8") as f: # load boundaries
+    with open(source, encoding="utf-8",mode="r") as f: # load boundaries
      boundaries = json.load(f)
      
 
     for regionBoundary in boundaries['features']: # get nb murdered by region
-        del regionBoundary['properties']['admin0Name']
         del regionBoundary['properties']['admin1Pcod']
         del regionBoundary['properties']['admin1RefN']
         
@@ -80,8 +79,9 @@ def addproperties_json(source, mortspd):
         currentRegion = regionBoundary['properties']['Departement']
         if currentRegion in mortspd:
             regionBoundary['properties']['Morts'] = mortspd[currentRegion]
-            mortspd[currentRegion] = regionBoundary['properties']['Morts']
-                        
+            
+        else: 
+            regionBoundary['properties']['Morts'] = 0                
             continue
     return  boundaries
 
@@ -101,7 +101,7 @@ def main():
 
     if not os.path.exists("output"):
         os.makedirs("output")
-    boundariesWithCountFile = open("./output/result.geojson", "w")
+    boundariesWithCountFile = open("./output/result.geojson",mode= "w", encoding="utf-8")
     boundariesWithCountFile.write(json.dumps(boundariesWithCount))
     boundariesWithCountFile.close()
 
