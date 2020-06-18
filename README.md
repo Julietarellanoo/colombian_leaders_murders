@@ -20,9 +20,23 @@ The objective is to compile open source geographic data in order to highlight th
 ## What's Kepler?
 [Kepler.gl](https://kepler.gl/#/) is a Uber’s Open Source Geospatial Toolbox for large-scale data sets. Built on top of the [deck](https://deck.gl/#/) WebGL data visualization framework, kepler.gl scales the map creation process by quickly gaining insights and validating visualization ideas from geospatial data.
 
-## Which selection parametres in Kepler?
-![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/parametres.png)
+## The 3 key points of kepler.gl:
+* Ease of building incredible data visualizations on interactive maps on the web, on a beautifully designed platform with a remarkable user experience.
+*  The commitment to Open Source, being in turn supported by large corporations such as Uber and Mapbox.
+*  Integración con otros productos y plataformas de terceros como  CARTO, así como con frameworks JavaScript como React para integrar el mapa en una aplicación a modo de componente.
 
+As a summary, we could say that kepler.gl is a tool made up of a platform to build geographic information visualizations quickly, easily, intuitively, with good graphic results and great interaction with the user.
+
+## Using kepler to visualize the leaders assassinated in Colombia in 2019
+1. Load the generated geoJSON from **leaders.py**.
+```sh
+$ python3 leaders.py
+```
+2.   Add layer **result.geoJSON** and symbolize it.
+![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/tableau.png)
+![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/parametres2.png)
+
+## Which selection parametres in Kepler?
 The choice of the parameters was realized regarding :
 * The geoJSON properties (number of Morts) as a 3D volume inside the map allows a better visualization of the quantity of homicides in relation to a volume instead of to a number, this helps a lot in the hierarchisation of the phenomenon.
 * A thematic and sequential range of colors (reds and oranges) that helps to do a follow up of the evolution of the social problem, from the less affected regions to the most impacted departments.
@@ -35,8 +49,15 @@ The 3D web maps are tools for the visualization of three-dimensional data (3D) t
 
 The challenges are, one one hand, to lighten the formats (geoJSON) using GIS tools and programmation languages like Python to reduce the waiting times of the user, and on the other hand, to turn the maps into an attractive and interactive communication tool 
 
+3. Apply filter and interaction options.
+![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/filter.png)
+![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/interactions.png)
 
-## Authors
+4. Export and share data and map.
+![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/share.png)
+
+**Final work in Results**
+## Author
 
 * **Julieth Arellano** - *student* - [Julietarellanoo](https://github.com/Julietarellanoo)
 
@@ -59,3 +80,4 @@ Source: kepler.gl
 ## Recommendations for improve
 * Implementation the automatic test for debugging in leaders.py
 * More custumer options using deck.gl instead of kepler toolbox
+* Implementation of Real-time data analysis
