@@ -1,3 +1,11 @@
+python is the directory in which the information necessary for the creation of the geojson for the visualization of the web map is stored.
+
+| Directory | Content |
+| ------ | ------ |
+| Data | csv file and boundaries_colombia geoJSON  |
+| jupyter_notebook | Notebook_leaders [script python]  |
+| output | csv file and final geoJSON |
+
 # Python Script
 
 ## Use with Python
