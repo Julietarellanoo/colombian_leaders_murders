@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Web Map of Homicide's Social Leaders in Colombia</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    
+    <script src="https://unpkg.com/deck.gl@^7.0.0/dist.min.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <style type="text/css">
+      body { font-family: Helvetica, Arial, sans-serif; width: 100vw; height: 100vh; margin: 0; }
+      #control-panel { position: absolute; background: #fff; top: 0; left: 0; margin: 12px; padding: 20px; font-size: 12px; line-height: 1.5; z-index: 1; }
+      label { display: inline-block; width: 140px; }
+    </style>
+  </head>
+
+  <body>
+    <div id="control-panel">
+      <div>
+        <label>Deaths</label>
+        <input id="Morts" type="range" min="0" max="133"></input>
+        <span id="Morts-type"></span>
+      </div>
+     </div>
+  </body>
+
+  <script type="text/javascript">
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoianVsaWV0YW1vbnRlc2NvIiwiYSI6ImNrYWlpdjlpYzAxOHIydHAxYWJuaDlpc24ifQ.pxB2B9LGKNFswIWJbikzWw';
+
+    const {MapboxLayer} = deck;
+
+    const map = new mapboxgl.Map({
+      container: document.body,
+      style: 'mapbox://styles/mapbox/light-v9',
+      center: [4.5709, -74.2973],
+      zoom: 5,
+ 
+    });
+
+    const DATA_URL = 'https://raw.githubusercontent.com/Julietarellanoo/colombian_leaders_murders/master/python/output/result.geojson';
+
+    let polygonLayer;
+
+    map.on('load', () => {
+      polygonLayer = new MapboxLayer({
+        type: PolygonLayer,
+        id: '',
+        data: d3.jsonp(DATA_URL),
+        Morts: 133,
+        Range: COLOR_RANGE,
+        getPosition: d => [Number(d.lng), Number(d.lat)],
+        opacity: 1
+      });
+
+      map.addLayer(polygonLayer, 'waterway-label');
+    });
+
+    OPTIONS.forEach(key => {
+      document.getElementById(key).oninput = (evt) => {
+        const value = Number(evt.target.value);
+        document.getElementById(key + '-value').innerHTML = value;
+        if (polygonLayer) {
+          polygonLayer.setProps({[key]: value});
+        }
+      };
+    });
+
+  </script>
+</html>
