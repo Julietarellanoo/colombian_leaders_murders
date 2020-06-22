@@ -67,7 +67,7 @@ The challenges are, on one hand, to lighten the formats (geoJSON) using GIS tool
 
 ## Results
 
-Source: kepler.gl 
+Source: [kepler](https://kepler.gl/#/) 
 * [link final work](https://kepler.gl/demo/map?mapUrl=https://dl.dropboxusercontent.com/s/fnris2rqj4glub6/keplergl_bojdsai.json)
 
 ![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/webcarte.png)
