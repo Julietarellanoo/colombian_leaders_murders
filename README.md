@@ -1,6 +1,6 @@
 # Visualization on a 3D web map of the number of homicides of social leaders in Colombia
 
-The objective is to compile open source geographic data in order to highlight the information linked to the number of murders by region in Colombia and visualize them in 3D.
+The objective is to compile open source geographic data in order to highlight the information linked to the number of murders of social leaders by region in Colombia and visualize them in 3D.
 
 ## Methodological scheme
 
@@ -21,11 +21,11 @@ The objective is to compile open source geographic data in order to highlight th
 [Kepler.gl](https://kepler.gl/#/) is a Uber’s Open Source Geospatial Toolbox for large-scale data sets. Built on top of the [deck](https://deck.gl/#/) WebGL data visualization framework, kepler.gl scales the map creation process by quickly gaining insights and validating visualization ideas from geospatial data.
 
 ## The 3 key points of kepler.gl:
-* Ease of building incredible data visualizations on interactive maps on the web, on a beautifully designed platform with a remarkable user experience.
-*  The commitment to Open Source, being in turn supported by large corporations such as Uber and Mapbox.
-*  Integración con otros productos y plataformas de terceros como  CARTO, así como con frameworks JavaScript como React para integrar el mapa en una aplicación a modo de componente.
+* Ease of building data visualizations on interactive maps on the web, on a designed platform with a comfortable user experience.
+*  The commitment to Open Source, being supported by large corporations such as Uber and Mapbox.
+*  Integration with other products and platforms frome third parties such as CARTO, and with frameworks JavaScript such as React to integrate the map into an app as one of its component. 
 
-As a summary, we could say that kepler.gl is a tool made up of a platform to build geographic information visualizations quickly, easily, intuitively, with good graphic results and great interaction with the user.
+As a summary, kepler.gl is a tool made up of a platform to build geographic information visualizations quickly, easily, intuitively, with good graphic results and great interaction with the user.
 
 ## Using kepler to visualize the leaders assassinated in Colombia in 2019
 1. Load the generated geoJSON from **leaders.py**.
@@ -34,20 +34,20 @@ $ python3 leaders.py
 ```
 2.   Add layer **result.geoJSON** and symbolize it.
 ![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/tableau.png)
-![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/parametres2.png)
+
 
 ## Which selection parametres in Kepler?
 The choice of the parameters was realized regarding :
-* The geoJSON properties (number of Morts) as a 3D volume inside the map allows a better visualization of the quantity of homicides in relation to a volume instead of to a number, this helps a lot in the hierarchisation of the phenomenon.
-* A thematic and sequential range of colors (reds and oranges) that helps to do a follow up of the evolution of the social problem, from the less affected regions to the most impacted departments.
+* The geoJSON properties (number of "Morts") as a 3D volume inside the map allows a better visualization of the quantity of homicides in relation to a volume instead of to a number, this helps a lot in the hierarchisation of the phenomenon.
+* A thematic and sequential range of colors (reds and oranges) that helps to do a follow up of the evolution of the social problem, from the less affected departments to the most impacted ones.
 * Height for each polygone depending on the quantity of homicides in order to highlight the most affected departments. 
 * The choice of the Map template style in Mapbox was "light". The template offers a subtle light backdrop for data visualizations, creating an harmony with the quite dense color range of the 3D map. 
 
 ## Why 3D web Map?
 
-The 3D web maps are tools for the visualization of three-dimensional data (3D) that allow the user to view the information from new perspectives. 3D maps allow the exploration of perspectives which possibly could not be visualizable on conventional bidimensional maps and charts (2D). The use of online cartographic tools allows the user to interact with the information and so to appropriate it more easily.   
+The 3D web maps are tools for the visualization of three-dimensional data (3D) that allow the user to view the information from new points of view. 3D maps allow the exploration of perspectives which possibly could not be visualizable on conventional bidimensional maps and charts (2D). The use of online cartographic tools allows the user to interact with the information and so to appropriate it more easily.   
 
-The challenges are, one one hand, to lighten the formats (geoJSON) using GIS tools and programmation languages like Python to reduce the waiting times of the user, and on the other hand, to turn the maps into an attractive and interactive communication tool 
+The challenges are, on one hand, to lighten the formats (geoJSON) using GIS tools and programmation languages like Python to reduce the waiting times of the user, and on the other hand, to turn the maps into an attractive and interactive communication tool.
 
 3. Apply filter and interaction options.
 ![kepler.gl](https://github.com/Julietarellanoo/colombian_leaders_murders/blob/master/images/filter.png)
@@ -74,10 +74,10 @@ Source: kepler.gl
 
 
 ## Challenges
-* The initial objective of developping the webmapping process from the beginning to the end encountered obstacles because of difficulties in the administration of my personnal time, my learning curve which is a bit slow, and the apparition of new learning challenges with the beginning of my internship. However, the discovery of developpers' tools (kepler), allowed me to realize a 3D web cartography of an important latinoamerican social phenomenon.
+* The initial objective of developping the webmapping process from beginning to end encountered obstacles because of difficulties in the administration of my personnal time, my learning curve which is a bit slow, and the apparition of new learning challenges with the beginning of my internship. However, the discovery of developpers' tools (kepler), allowed me to realize a 3D web cartography of an important latinoamerican social phenomenon.
 
 
-## Recommendations for improve
-* Implementation the automatic test for debugging in leaders.py
-* More custumer options using deck.gl instead of kepler toolbox
+## Recommendations for further improvement
+* Implementation of the automatic test for debugging in leaders.py
+* Inclusion of more user options using deck.gl instead of kepler toolbox
 * Implementation of Real-time data analysis
